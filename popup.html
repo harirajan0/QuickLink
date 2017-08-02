@@ -13,8 +13,29 @@
         <button class="switch-button-on" id="shortenLinkOn">Shorten</button>
         <button class="switch-button-off" id="shortenLinkOff">Shorten</button>
     </span>
-    <text class="quick-link-text">http://www.quicklink.com/</text>
-    <input class="quick-link-path-input" id="quickLinkPathInput" type="text"/>
+    <div id="shorten-link-content">
+        <text class="quick-link-text">http://www.quicklink.com/</text>
+        <input class="quick-link-path-input" id="quickLinkPathInput" type="text"/>
+    <div/>
+    <div id="save-to-folder-content">
+        <div id="not-logged-in-content">
+            <p "not-logged-in-message">
+                Please log into your Google account on chrome to use this feature.
+            </p>
+        </div>
+        <div id="no-quicklink-user-content">
+            <p id="no-quicklink-user-message">
+                Looks like you don't have a QuickLink username yet, 
+                please enter a username and we'll check if its available.
+            </p>
+            <input type="text" id="new-user">
+            <button class="secondary-button" id="verify-user">Confirm Username</button>
+            <p id="username-invalid">Username not availabale :(</p>
+        </div>
+        <div id="valid-save-to-folder">
+            <span id="welcome-message"/>
+        </div>
+    </div>
     <br/>
     <button class="secondary-button" id="generateRandomQuickLink">Generate Random QuickLink</button>
     <button class="primary-button" id="confirmAndCopy">Confirm and Copy</button>
