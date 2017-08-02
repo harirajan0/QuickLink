@@ -45,21 +45,46 @@ onload = function()
         return path;
     }
 
+    function POST(url, body, callback)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() 
+        { 
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            {
+                callback(xmlHttp.responseText);
+            }
+        }
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader("Content-type", "application/json");
+        xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xmlHttp.send(body);
+    }
+
     button_shortenLinkOff.addEventListener('click', function()
     {
         toggleButtons();
-        console.log("hello");
     });
 
     button_saveToFolderOff.addEventListener('click', function()
     {
         toggleButtons();
-        console.log("hello");
     });
 
     button_generateRandomQuickLink.addEventListener('click', function()
     {
         input_quickLinkPath.value = generateRandomPath();
+    });
+
+    button_confirmAndCopy.addEventListener('click', function()
+    {
+        console.log("button click");
+        var body = 
+        {
+            "shortened" : false,
+	        "path" : "harirajan0/_public/google"
+        }
+        POST("http://localhost:3000/find", JSON.stringify(body), (response) => console.log(response)); 
     });
 
 }
