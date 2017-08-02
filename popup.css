@@ -1,0 +1,70 @@
+html *
+{
+   font-family: "Century Gothic", CenturyGothic, AppleGothic,sans-serif;
+}
+
+body
+{
+    width: 300px;
+    height: 500px;
+}
+
+.title
+{
+    font-size: 22px;
+}
+
+.quick-link-text
+{
+    font-size: 12px;
+}
+
+.quick-link-path-input
+{
+    outline: none;
+}
+
+.switch-buttons
+{
+}
+
+.switch-button-on, .switch-button-off
+{
+    font-size: 12px;
+	border: 1px solid #212e3d;
+    cursor:pointer;
+    outline: none;
+    float: left;
+}
+
+.switch-button-on
+{
+    color: white;
+	background-color: #18a0e0;
+}
+
+.switch-button-off
+{
+    color: gray;
+	background-color: lightgray;
+}
+
+.switch-button-off:hover
+{
+    background-color: white;
+}
+
+#shortenLinkOn, #shortenLinkOff
+{
+    border-radius: 0px 8px 8px 0px;
+}
+
+#saveToFolderOn, #saveToFolderOff
+{
+    border-radius: 8px 0px 0px 8px;
+}
+
+.primary-button
+{
+    text-align: center;
+}
