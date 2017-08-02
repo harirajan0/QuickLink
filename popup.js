@@ -78,13 +78,7 @@ onload = function()
 
     button_confirmAndCopy.addEventListener('click', function()
     {
-        console.log("button click");
-        var body = 
-        {
-            "shortened" : false,
-	        "path" : "harirajan0/_public/google"
-        }
-        POST("http://localhost:3000/find", JSON.stringify(body), (response) => console.log(response)); 
+        
     });
 
 }
