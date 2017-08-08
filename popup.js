@@ -1,6 +1,8 @@
 onload = function()
 {
     var button_confirmAndCopy = document.getElementById('confirmAndCopy');
+    var button_homeOn = document.getElementById('homeOn');
+    var button_homeOff = document.getElementById('homeOff');
     var button_shortenLinkOn = document.getElementById('shortenLinkOn');
     var button_shortenLinkOff = document.getElementById('shortenLinkOff');
     var button_saveToFolderOn = document.getElementById('saveToFolderOn');
@@ -11,16 +13,9 @@ onload = function()
     input_quickLinkPath.value = generateRandomPath();
 
     // default is save to folder
+    button_homeOff.style.display = 'none';
     button_shortenLinkOn.style.display = 'none';
-    button_saveToFolderOff.style.display = 'none';
-
-    function toggleButtons()
-    {
-        toggleShowHide(button_shortenLinkOn);
-        toggleShowHide(button_shortenLinkOff);
-        toggleShowHide(button_saveToFolderOn);
-        toggleShowHide(button_saveToFolderOff);
-    }
+    button_saveToFolderOn.style.display = 'none';
 
     function toggleShowHide(element)
     {
@@ -63,13 +58,32 @@ onload = function()
 
     button_shortenLinkOff.addEventListener('click', function()
     {
-        toggleButtons();
+        button_shortenLinkOff.style.display = 'none';
+        button_shortenLinkOn.style.display = 'block';
+        button_saveToFolderOff.style.display = 'block';
+        button_saveToFolderOn.style.display = 'none';
+        button_homeOff.style.display = 'block';
+        button_homeOn.style.display = 'none';
     });
 
     button_saveToFolderOff.addEventListener('click', function()
     {
-        toggleButtons();
+        button_shortenLinkOff.style.display = 'block';
+        button_shortenLinkOn.style.display = 'none';
+        button_saveToFolderOff.style.display = 'none';
+        button_saveToFolderOn.style.display = 'block';
+        button_homeOff.style.display = 'block';
+        button_homeOn.style.display = 'none';
     });
+    button_homeOff.addEventListener('click', function()
+    {
+        button_shortenLinkOff.style.display = 'block';
+        button_shortenLinkOn.style.display = 'none';
+        button_saveToFolderOff.style.display = 'block';
+        button_saveToFolderOn.style.display = 'none';
+        button_homeOff.style.display = 'none';
+        button_homeOn.style.display = 'block';
+    })
 
     button_generateRandomQuickLink.addEventListener('click', function()
     {
@@ -78,7 +92,7 @@ onload = function()
 
     button_confirmAndCopy.addEventListener('click', function()
     {
-        
+
     });
 
 }

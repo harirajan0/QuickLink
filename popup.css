@@ -24,10 +24,6 @@ body
     outline: none;
 }
 
-.switch-buttons
-{
-}
-
 .switch-button-on, .switch-button-off
 {
     font-size: 12px;
@@ -54,6 +50,11 @@ body
     background-color: white;
 }
 
+#homeOn, #homeOff
+{
+    border-radius: 8px 0px 0px 8px;
+}
+
 #shortenLinkOn, #shortenLinkOff
 {
     border-radius: 0px 8px 8px 0px;
@@ -61,7 +62,7 @@ body
 
 #saveToFolderOn, #saveToFolderOff
 {
-    border-radius: 8px 0px 0px 8px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 .primary-button
