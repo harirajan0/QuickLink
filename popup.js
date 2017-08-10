@@ -1,32 +1,52 @@
 onload = function()
 {
-    var button_confirmAndCopy = document.getElementById('confirmAndCopy');
-    var button_homeOn = document.getElementById('homeOn');
-    var button_homeOff = document.getElementById('homeOff');
-    var button_shortenLinkOn = document.getElementById('shortenLinkOn');
-    var button_shortenLinkOff = document.getElementById('shortenLinkOff');
-    var button_saveToFolderOn = document.getElementById('saveToFolderOn');
-    var button_saveToFolderOff = document.getElementById('saveToFolderOff');
-    var button_generateRandomQuickLink = document.getElementById('generateRandomQuickLink');
-    var input_quickLinkPath = document.getElementById('quickLinkPathInput');
+    // buttons
+    var button_homeOn = document.getElementById('home-on');
+    var button_homeOff = document.getElementById('home-off');
+    var button_saveToFolderOn = document.getElementById('save-to-folder-on');
+    var button_saveToFolderOff = document.getElementById('save-to-folder-off');
+    var button_shortenLinkOn = document.getElementById('shorten-link-on');
+    var button_shortenLinkOff = document.getElementById('shorten-link-off');
 
-    input_quickLinkPath.value = generateRandomPath();
+    //home 
+    var text_notLoggedIn = document.getElementById('not-logged-in-message');
+    var text_noUserAccount = document.getElementById('no-quicklink-user-message');
+    var text_usernameInvalid = document.getElementById('username-invalid');
+    var button_verifyUsername = document.getElementById('verify-username');
+    var input_newUsername = document.getElementById('new-username');
 
-    // default is save to folder
-    button_homeOff.style.display = 'none';
-    button_shortenLinkOn.style.display = 'none';
-    button_saveToFolderOn.style.display = 'none';
+    //shorten link
+    var div_shortenLinkContent = document.getElementById('shorten-link-content');
+    var button_confirmAndCopy = document.getElementById('confirm-copy');
+    var button_generateRandomQuickLink = document.getElementById('random-quick-link');
+    var input_quickLinkPath = document.getElementById('quick-link-path-input');
 
-    function toggleShowHide(element)
+    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) 
     {
-        if (element.style.display === 'none')
+        var url = tabs[0].url;
+    });
+
+    chrome.identity.getProfileUserInfo(function(userInfo)
+    {
+        if (userInfo.email == "")
         {
-            element.style.display = 'block';
+
         }
-        else
-        {
-            element.style.display = 'none';
-        }
+    });
+
+
+    // default is home
+    hideAll();
+    showHomePage();
+
+    function show(element)
+    {
+        element.style.display = 'block';
+    }
+
+    function hide(element)
+    {
+        element.style.display = 'none';
     }
 
     function generateRandomPath()
@@ -56,34 +76,87 @@ onload = function()
         xmlHttp.send(body);
     }
 
-    button_shortenLinkOff.addEventListener('click', function()
+    function hideAll()
     {
-        button_shortenLinkOff.style.display = 'none';
-        button_shortenLinkOn.style.display = 'block';
-        button_saveToFolderOff.style.display = 'block';
-        button_saveToFolderOn.style.display = 'none';
-        button_homeOff.style.display = 'block';
-        button_homeOn.style.display = 'none';
+        // buttons
+        hide(button_homeOff);
+        hide(button_homeOn);
+        hide(button_saveToFolderOff);
+        hide(button_saveToFolderOn);
+        hide(button_shortenLinkOff);
+        hide(button_shortenLinkOn);
+
+        // home 
+        hide(text_notLoggedIn);
+        hide(text_noUserAccount);
+        hide(text_usernameInvalid);
+        hide(button_verifyUsername);
+        hide(input_newUsername);
+        
+        // shorten link
+        hide(div_shortenLinkContent);
+    }
+
+    function showHomePage()
+    {
+        show(button_homeOn);
+        show(button_saveToFolderOff);
+        show(button_shortenLinkOff);
+
+        chrome.identity.getProfileUserInfo(function(userInfo)
+        {
+            if (userInfo.email = empty)
+            {
+                show(text_notLoggedIn);
+            }
+            else if (false)
+            {
+                // if user is logged in but no quicklink account
+                // show the according message
+                // show username input and confirm username button
+            }
+        });
+    }
+
+    function showSaveToFolderPage()
+    {
+        show(button_homeOff);
+        show(button_saveToFolderOn);
+        show(button_shortenLinkOff);
+    }
+
+    function showShortenLinkPage()
+    {
+        show(button_homeOff);
+        show(button_saveToFolderOff);
+        show(button_shortenLinkOn);
+
+        show(div_shortenLinkContent);
+
+        input_quickLinkPath.value = generateRandomPath();
+
+        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) 
+        {
+            var url = tabs[0].url;
+        });
+    }
+
+    button_homeOff.addEventListener('click', function()
+    {
+        hideAll();
+        showHomePage();
     });
 
     button_saveToFolderOff.addEventListener('click', function()
     {
-        button_shortenLinkOff.style.display = 'block';
-        button_shortenLinkOn.style.display = 'none';
-        button_saveToFolderOff.style.display = 'none';
-        button_saveToFolderOn.style.display = 'block';
-        button_homeOff.style.display = 'block';
-        button_homeOn.style.display = 'none';
+        hideAll();
+        showSaveToFolderPage();
     });
-    button_homeOff.addEventListener('click', function()
+    button_shortenLinkOff.addEventListener('click', function()
     {
-        button_shortenLinkOff.style.display = 'block';
-        button_shortenLinkOn.style.display = 'none';
-        button_saveToFolderOff.style.display = 'block';
-        button_saveToFolderOn.style.display = 'none';
-        button_homeOff.style.display = 'none';
-        button_homeOn.style.display = 'block';
-    })
+        hideAll();
+        showShortenLinkPage();
+    });
 
     button_generateRandomQuickLink.addEventListener('click', function()
     {
@@ -92,7 +165,9 @@ onload = function()
 
     button_confirmAndCopy.addEventListener('click', function()
     {
-
+        
     });
+
+
 
 }

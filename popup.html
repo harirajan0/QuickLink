@@ -8,38 +8,41 @@
   <body>
     <h1 class="title">QuickLink<h1/>
     <span id="switch-buttons">
-        <button class="switch-button-on" id="homeOn">Home</button>
-        <button class="switch-button-off" id="homeOff">Home</button>
-        <button class="switch-button-on" id="saveToFolderOn">Save to Folder</button>
-        <button class="switch-button-off" id="saveToFolderOff">Save to Folder</button>
-        <button class="switch-button-on" id="shortenLinkOn">Shorten</button>
-        <button class="switch-button-off" id="shortenLinkOff">Shorten</button>
+        <button class="switch-button-on" id="home-on">Home</button>
+        <button class="switch-button-off" id="home-off">Home</button>
+        <button class="switch-button-on" id="save-to-folder-on">Save to Folder</button>
+        <button class="switch-button-off" id="save-to-folder-off">Save to Folder</button>
+        <button class="switch-button-on" id="shorten-link-on">Shorten</button>
+        <button class="switch-button-off" id="shorten-link-off">Shorten</button>
     </span>
     <div id="shorten-link-content">
-        <text class="quick-link-text">http://www.quicklink.com/</text>
-        <input class="quick-link-path-input" id="quickLinkPathInput" type="text"/>
+        <text class="quick-link-url-prefix" id="quick-link-url-prefix">http://www.quicklink.com/</text>
+        <input class="quick-link-path-input" id="quick-link-path-input" type="text"/>
+        <button class="secondary-button" id="random-quick-link">Generate Random QuickLink</button>
+        <button class="primary-button" id="confirm-copy">Confirm and Copy</button>
     <div/>
     <div id="save-to-folder-content">
         <div id="not-logged-in-content">
-            <p "not-logged-in-message">
-                Please log into your Google account on chrome to use this feature.
+            <p id ="not-logged-in-message">
+                Please log into your Google account on chrome if you would like to 
+                save and organize your links. If not, feel free to shorten you're links 
+                by switching to the "Shorten" tab :)
             </p>
         </div>
         <div id="no-quicklink-user-content">
             <p id="no-quicklink-user-message">
                 Looks like you don't have a QuickLink username yet, 
-                please enter a username and we'll check if its available.
+                please enter a username and we'll check if its available if you would like to 
+                save and organize your links. If not, feel free to shorten you're links 
+                by switching to the "Shorten" tab :).
             </p>
-            <input type="text" id="new-user">
-            <button class="secondary-button" id="verify-user">Confirm Username</button>
+            <input type="text" id="new-username">
+            <button class="secondary-button" id="verify-username">Confirm Username</button>
             <p id="username-invalid">Username not availabale :(</p>
         </div>
         <div id="valid-save-to-folder">
             <span id="welcome-message"/>
         </div>
     </div>
-    <br/>
-    <button class="secondary-button" id="generateRandomQuickLink">Generate Random QuickLink</button>
-    <button class="primary-button" id="confirmAndCopy">Confirm and Copy</button>
   </body>
 </html>

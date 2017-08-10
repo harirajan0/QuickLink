@@ -5,8 +5,13 @@ html *
 
 body
 {
-    width: 300px;
+    width: 350px;
     height: 500px;
+}
+
+p, text
+{
+    font-size: 14px; 
 }
 
 .title
@@ -50,19 +55,19 @@ body
     background-color: white;
 }
 
-#homeOn, #homeOff
+#home-on, #home-off
 {
     border-radius: 8px 0px 0px 8px;
 }
 
-#shortenLinkOn, #shortenLinkOff
-{
-    border-radius: 0px 8px 8px 0px;
-}
-
-#saveToFolderOn, #saveToFolderOff
+#save-to-folder-on, #save-to-folder-off
 {
     border-radius: 0px 0px 0px 0px;
+}
+
+#shorten-link-on, #shorten-link-off
+{
+    border-radius: 0px 8px 8px 0px;
 }
 
 .primary-button
